@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "path": "Assignment4PartII.sln",
+    "projects": [
+      "Assignment4.Tests\\Assignment4.Tests.csproj",
+      "DataLayer\\DataLayer.csproj",
+      "WebServer\\WebServer.csproj"
+    ]
+  }
+}
