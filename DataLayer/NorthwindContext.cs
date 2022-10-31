@@ -58,13 +58,13 @@ namespace DataLayer
 
             modelBuilder.Entity<Order>().HasMany(o => o.OrderDetails).WithOne(d => d.Order);
             modelBuilder.Entity<Order>().ToTable("orders");
-            modelBuilder.Entity<Order>().Property(x => x.Id).HasColumnName("orderid");
-            modelBuilder.Entity<Order>().Property(x => x.Date).HasColumnName("orderdate");
-            modelBuilder.Entity<Order>().Property(x => x.Required).HasColumnName("requireddate");
-            modelBuilder.Entity<Order>().Property(x => x.Shipped).HasColumnName("shippeddate");
-            modelBuilder.Entity<Order>().Property(x => x.Freight).HasColumnName("freight");
-            modelBuilder.Entity<Order>().Property(x => x.ShipName).HasColumnName("shipname");
-            modelBuilder.Entity<Order>().Property(x => x.ShipCity).HasColumnName("shipcity");
+            modelBuilder.Entity<Order>().Property(o => o.Id).HasColumnName("orderid");
+            modelBuilder.Entity<Order>().Property(o => o.Date).HasColumnName("orderdate");
+            modelBuilder.Entity<Order>().Property(o => o.Required).HasColumnName("requireddate");
+            modelBuilder.Entity<Order>().Property(o => o.Shipped).HasColumnName("shippeddate");
+            modelBuilder.Entity<Order>().Property(o => o.Freight).HasColumnName("freight");
+            modelBuilder.Entity<Order>().Property(o => o.ShipName).HasColumnName("shipname");
+            modelBuilder.Entity<Order>().Property(o => o.ShipCity).HasColumnName("shipcity");
         }
     }
 }
