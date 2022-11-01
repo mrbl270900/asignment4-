@@ -38,6 +38,20 @@ namespace DataLayer
             return newCat;
         }
 
+        public Category CreateCategory(Category input)
+        {
+            var maxId = db.Categories.Max(x => x.Id);
+            Category newCat = new Category()
+            {
+                Id = maxId + 1,
+                Name = input.Name,
+                Description = input.Description
+            };
+            db.Categories.Add(newCat);
+            db.SaveChanges();
+            return newCat;
+        }
+
         public bool DeleteCategory(int id)
         {
             var dbCat = GetCategory(id);
@@ -106,6 +120,12 @@ namespace DataLayer
             }
 
             return list;
+        }
+        public List<Product> GetProducts()
+        {
+            var products = db
+                .Products.ToList();
+            return products;
         }
 
 

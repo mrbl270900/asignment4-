@@ -12,10 +12,16 @@ namespace DataLayer
         List<Category> GetCategories();
         Category? GetCategory(int id);
         Product? GetProduct(int id);
+        List<Product> GetProducts();
+        Category CreateCategory(Category input);
+
+        List<Product> GetProductByCategory(int id);
+
         Category CreateCategory(string name, string description);
 
         bool UpdateCategory(int id, string name, string desc);
         bool DeleteCategory(int id);
+
 
         List<Product> GetProductByName(string input);
     }
