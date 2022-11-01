@@ -22,7 +22,7 @@ namespace Assignment4.Tests
             Assert.Equal("Beverages", data.First()["name"]);
             Assert.Equal("Seafood", data.Last()["name"]);
         }
-#if COMMENT
+
         [Fact]
         public void ApiCategories_GetWithValidCategoryId_OkAndCategory()
         {
@@ -186,7 +186,7 @@ namespace Assignment4.Tests
             Assert.Equal(0, products.Count);
         }
 
-#endif
+
 
         // Helpers
 

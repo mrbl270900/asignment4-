@@ -1,17 +1,15 @@
+using DataLayer;
+
 var builder = WebApplication.CreateBuilder(args);
 
-
 // Add services to the container.
-builder.Services.AddMvcCore();
 
-var app = builder.Build();
+builder.Services.AddControllers();
+builder.Services.AddAutoMapper();
+builder.Services.AddSingleton<IDataService, DataService>();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Error");
-}
+var app =  builder.Build();
 
-app.UseRouting();
 app.MapControllers();
+
 app.Run();

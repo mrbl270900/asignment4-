@@ -7,13 +7,13 @@ using System.Xml.Linq;
 
 namespace DataLayer
 {
-    public class DataService
+    public class DataService : IDataService
     {
 
         public NorthwindContext db = new NorthwindContext();
 
 
-        public IList<Category> GetCategories()
+        public List<Category> GetCategories()
         {
             return db.Categories.ToList();
         }
