@@ -128,6 +128,18 @@ namespace DataLayer
 
         }
 
+        public Order GetOrderByShippingname(string input)
+        {
+            var orderList = db
+                .Orders
+                .Include(x => x.OrderDetails)
+                .ThenInclude(x => x.Product)
+                .ThenInclude(x => x.Category)
+                .Where(x => x.ShipName.Equals(input)).ToList();
+            return orderList.First();
+
+        }
+
         //order details
 
         public List<OrderDetails> GetOrderDetailsByOrderId(int id)
