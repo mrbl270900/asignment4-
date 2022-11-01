@@ -11,15 +11,12 @@ namespace DataLayer
     {
         List<Category> GetCategories();
         Category? GetCategory(int id);
-        List<Product> GetProducts();
         Product? GetProduct(int id);
-        Category CreateCategory(string name, string desc);
-        Category CreateCategory(Category category);
-        Category UpdateCategory(Category category);
+        Category CreateCategory(string name, string description);
 
         bool UpdateCategory(int id, string name, string desc);
         bool DeleteCategory(int id);
 
-        List<ProductSearchModel> GetProductByName(string search);
+        List<Product> GetProductByName(string input);
     }
 }
