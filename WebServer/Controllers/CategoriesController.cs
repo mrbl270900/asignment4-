@@ -67,7 +67,6 @@ namespace WebServer.Controllers
             return Ok();
         }
 
-        // dunt know
         [HttpPut("{id}", Name = nameof(UpdateCategory))]
         public IActionResult UpdateCategory(int id, CategoryCreateModel model)
         {

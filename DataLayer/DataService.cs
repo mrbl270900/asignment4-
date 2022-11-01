@@ -86,6 +86,10 @@ namespace DataLayer
             Product product = db.Products.FirstOrDefault(x => x.Id == id);
             product.Category = GetCategory(product.CategoryId);
             product.CategoryName = product.Category.Name;
+            if (product == null)
+            {
+                return null;
+            }
             return product;
         }
 

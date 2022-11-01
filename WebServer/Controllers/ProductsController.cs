@@ -69,7 +69,7 @@ namespace WebServer.Controllers
         {
 
             var products = _dataService.GetProductByCategory(id);
-            // prolly needs some mapping
+
             foreach (var product in products)
             {
                 return Ok(products);
