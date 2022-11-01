@@ -70,8 +70,8 @@ namespace DataLayer
         public Product GetProduct(int id)
         {
             Product product = db.Products.FirstOrDefault(x => x.Id == id);
-            product.Category = GetCategory(product.CategoryId);
-            product.CategoryName = product.Category.Name;
+            //product.Category = GetCategory(product.CategoryId);
+            //product.CategoryName = product.Category.Name;
             return product;
         }
 

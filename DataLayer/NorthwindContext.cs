@@ -30,13 +30,13 @@ namespace DataLayer
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Category>().HasMany(c => c.Products).WithOne(p => p.Category);
+            //modelBuilder.Entity<Category>().HasMany(c => c.Products).WithOne(p => p.Category).IsRequired();
             modelBuilder.Entity<Category>().ToTable("categories");
             modelBuilder.Entity<Category>().Property(c => c.Id).HasColumnName("categoryid");
             modelBuilder.Entity<Category>().Property(c => c.Name).HasColumnName("categoryname");
             modelBuilder.Entity<Category>().Property(c => c.Description).HasColumnName("description");
 
-            modelBuilder.Entity<Product>().HasOne(p => p.Category).WithMany(c => c.Products);
+            //modelBuilder.Entity<Product>().HasOne(p => p.Category).WithMany(c => c.Products).IsRequired();
             modelBuilder.Entity<Product>().ToTable("products");
             modelBuilder.Entity<Product>().Property(p => p.Id).HasColumnName("productid");
             modelBuilder.Entity<Product>().Property(p => p.Name).HasColumnName("productname");
@@ -46,9 +46,9 @@ namespace DataLayer
             modelBuilder.Entity<Product>().Property(p => p.QuantityPerUnit).HasColumnName("quantityperunit");
 
 
+            //modelBuilder.Entity<OrderDetails>().HasOne(d => d.Product).WithMany(p => p.OrderDetails).IsRequired();
+            //modelBuilder.Entity<OrderDetails>().HasOne(d => d.Order).WithMany(o => o.OrderDetails).IsRequired();
             modelBuilder.Entity<OrderDetails>().HasKey(d => new { d.OrderId, d.ProductId });
-            modelBuilder.Entity<OrderDetails>().HasOne(d => d.Product).WithMany(p => p.OrderDetails);
-            modelBuilder.Entity<OrderDetails>().HasOne(d => d.Order).WithMany(o => o.OrderDetails);
             modelBuilder.Entity<OrderDetails>().ToTable("orderdetails");
             modelBuilder.Entity<OrderDetails>().Property(d => d.UnitPrice).HasColumnName("unitprice");
             modelBuilder.Entity<OrderDetails>().Property(d => d.Quantity).HasColumnName("quantity");
@@ -56,7 +56,7 @@ namespace DataLayer
             modelBuilder.Entity<OrderDetails>().Property(d => d.OrderId).HasColumnName("orderid");
             modelBuilder.Entity<OrderDetails>().Property(d => d.ProductId).HasColumnName("productid");
 
-            modelBuilder.Entity<Order>().HasMany(o => o.OrderDetails).WithOne(d => d.Order);
+            //modelBuilder.Entity<Order>().HasMany(o => o.OrderDetails).WithOne(d => d.Order).IsRequired();
             modelBuilder.Entity<Order>().ToTable("orders");
             modelBuilder.Entity<Order>().Property(o => o.Id).HasColumnName("orderid");
             modelBuilder.Entity<Order>().Property(o => o.Date).HasColumnName("orderdate");
