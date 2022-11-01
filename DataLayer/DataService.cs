@@ -70,8 +70,8 @@ namespace DataLayer
         public Product GetProduct(int id)
         {
             Product product = db.Products.FirstOrDefault(x => x.Id == id);
-            //product.Category = GetCategory(product.CategoryId);
-            //product.CategoryName = product.Category.Name;
+            product.Category = GetCategory(product.CategoryId);
+            product.CategoryName = product.Category.Name;
             return product;
         }
 
@@ -112,10 +112,13 @@ namespace DataLayer
         //order
         public Order GetOrder(int id)
         {
-            Order order = db.Orders.FirstOrDefault(x => x.Id == id);
-            //var list = db.OrderDetails.FirstOrDefault(x => x.OrderId == id);
-            //order.OrderDetails = list;
-            return order;
+            var orderList = db
+                .Orders
+                .Include(x => x.OrderDetails)
+                .ThenInclude(x => x.Product)
+                .ThenInclude(x => x.Category)
+                .Where(x => x.Id == id).ToList();
+            return orderList.First();
 
         }
 
@@ -129,16 +132,25 @@ namespace DataLayer
 
         public List<OrderDetails> GetOrderDetailsByOrderId(int id)
         {
-            Order order = db.Orders.FirstOrDefault(x => x.Id == id);
-            List<OrderDetails> list = new List<OrderDetails>();
-            list = order.OrderDetails.ToList();
-            return list;
+            var orderDetailsList = db
+                .OrderDetails
+                .Include(x => x.Product)
+                .ThenInclude(x => x.Category)
+                .Include(x => x.Order)
+                .Where(x => x.OrderId == id).ToList();
+            return orderDetailsList;
 
         }
 
         public List<OrderDetails> GetOrderDetailsByProductId(int id)
         {
-            return null;
+            var orderDetailsList = db
+                .OrderDetails
+                .Include(x => x.Product)
+                .ThenInclude(x => x.Category)
+                .Include(x => x.Order)
+                .Where(x => x.ProductId == id).ToList();
+            return orderDetailsList;
 
         }
     }

@@ -10,11 +10,11 @@ namespace DataLayer.Model
     public class Order
     {
         public int Id { get; set; }
-        public DateTime? Date { get; set; }
+        public DateTime? Date { get; set; } = new DateTime();
 
-        public DateTime? Required { get; set; }
+        public DateTime? Required { get; set; } = new DateTime();
 
-        public DateTime? Shipped { get; set; }
+        public DateTime? Shipped { get; set; } = new DateTime();
 
         public int? Freight { get; set; }
 
@@ -22,7 +22,6 @@ namespace DataLayer.Model
 
         public string? ShipCity { get; set; }
 
-        public List<OrderDetails>? OrderDetails { get; set; }
-        //hejs
+        public List<OrderDetails> OrderDetails { get; set; }
     }
 }
